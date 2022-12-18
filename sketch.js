@@ -88,14 +88,7 @@ function controleRaquete(){
   if(keyIsDown(DOWN_ARROW)){
     eixoYraquete += 10;
   }
-  /*
   //Controla a raquete pelo mouse
-  if (mouseY-alturaRaquete/2 <= larguraFundo){
-  }
-  if(mouseY+alturaRaquete/2 >= larguraFundo){
-  } else{
-  eixoYraquete = mouseY-alturaRaquete/2;
-  }*/
   eixoYraquete = mouseY-alturaRaquete/2;
 }
 
@@ -113,8 +106,17 @@ function verificaColisaoRaqueteOponente(){
 }
 
 function movimentaRaqueteOponente() {
+  //Raquete controlada por AI
     velocidadeYoponente = eixoYbolinha - eixoYraqueteOponente - comprimentoRaquete / 2 - 30;
-    eixoYraqueteOponente += velocidadeYoponente
+    eixoYraqueteOponente += velocidadeYoponente;
+  
+  //Raquete controlada por 2 jogador
+    if (keyIsDown(87)){ //87 equivale a tecla W
+        eixoYraqueteOponente -= 10;
+    }
+    if (keyIsDown(83)){ //83 equivale a tecla S
+        eixoYraqueteOponente += 10;
+    }
 }
 
 function mostraPlacar(){
